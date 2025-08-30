@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { useParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Card } from "@/components/ui/card";
@@ -205,12 +204,10 @@ export default function TestimonialForm({
       return;
     }
 
-    const imageKey = `collection/${collection.slug}/${uuidv4()}.${
-      data.giverImage?.type?.split("/")[1] || ""
-    }`;
-    const videoKey = `collection/${collection.slug}/${uuidv4()}.${
-      videoBlob?.type?.split("/")[1] || ""
-    }`;
+    const imageKey = `collection/${collection.slug}/${uuidv4()}.${data.giverImage?.type?.split("/")[1] || ""
+      }`;
+    const videoKey = `collection/${collection.slug}/${uuidv4()}.${videoBlob?.type?.split("/")[1] || ""
+      }`;
 
     await uploadFile(imageKey, data?.giverImage as File);
     if (testimonialType === TESTIMONIALS_TYPE.VIDEO && videoBlob)
@@ -279,9 +276,8 @@ export default function TestimonialForm({
                     }}
                   >
                     <Star
-                      className={`w-8 h-8 cursor-pointer transition-colors ${
-                        star <= selectedStars ? "bg-yellow-400" : "bg-gray-300"
-                      }`}
+                      className={`w-8 h-8 cursor-pointer transition-colors ${star <= selectedStars ? "bg-yellow-400" : "bg-gray-300"
+                        }`}
                     />
                   </button>
                 ))}
@@ -302,11 +298,10 @@ export default function TestimonialForm({
                   setValue("type", type);
                   if (type === TESTIMONIALS_TYPE.TEXT) resetVideoRecording();
                 }}
-                className={`p-4 border-2 rounded-xl transition-colors ${
-                  testimonialType === type
+                className={`p-4 border-2 rounded-xl transition-colors ${testimonialType === type
                     ? "border-blue-400 bg-blue-50 dark:border-gray-500 dark:bg-gray-800"
                     : "border-gray-200 dark:border-gray-700 dark:bg-gray-800"
-                }`}
+                  }`}
               >
                 {type === TESTIMONIALS_TYPE.TEXT ? (
                   <MessageSquare className="w-6 h-6 mx-auto mb-2 text-blue-600 dark:text-gray-200" />
@@ -314,11 +309,10 @@ export default function TestimonialForm({
                   <Video className="w-6 h-6 mx-auto mb-2 text-gray-600 dark:text-gray-300" />
                 )}
                 <span
-                  className={`text-sm font-medium ${
-                    type === TESTIMONIALS_TYPE.TEXT
+                  className={`text-sm font-medium ${type === TESTIMONIALS_TYPE.TEXT
                       ? "text-blue-700 dark:text-gray-200"
                       : "text-gray-700 dark:text-gray-300"
-                  }`}
+                    }`}
                 >
                   {type === TESTIMONIALS_TYPE.TEXT ? "Text" : "Video"}
                 </span>
@@ -349,9 +343,8 @@ export default function TestimonialForm({
                     ref={videoRef}
                     autoPlay
                     muted
-                    className={`mx-auto my-2 rounded-2xl ${
-                      isRecording ? "block" : "hidden"
-                    }`}
+                    className={`mx-auto my-2 rounded-2xl ${isRecording ? "block" : "hidden"
+                      }`}
                   />
                   {errors.video && (
                     <p className="text-red-500 text-sm">

@@ -43,6 +43,7 @@ export async function GET(
       headers: corsHeaders,
     });
   } catch (err) {
+    console.log("testimonial error --> ", err)
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500, headers: corsHeaders }

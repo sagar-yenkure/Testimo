@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import TestimonialActions from "./TestimonialActions";
 import VideoModal from "./VideoModal";
-import { TESTIMONIALS_TYPE, TESTIMONIAL_STATUS } from "@/types";
+import { TESTIMONIAL_STATUS } from "@/types";
 import Image from "next/image";
 import { Testimonial } from "../../../prisma/generated/prisma";
 
@@ -80,9 +80,8 @@ const RatingStars = ({ rating }: { rating: number }) => (
     {[...Array(5)].map((_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${
-          i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-200"
-        }`}
+        className={`w-4 h-4 ${i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-200"
+          }`}
         aria-hidden="true"
       />
     ))}

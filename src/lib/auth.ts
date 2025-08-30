@@ -103,6 +103,7 @@ export const authOptions: NextAuthOptions = {
 
           return true;
         } catch (error) {
+          console.log("auth callback signIn error --> ", error)
           return false;
         }
       }

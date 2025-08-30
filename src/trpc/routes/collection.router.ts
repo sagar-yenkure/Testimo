@@ -5,7 +5,6 @@ import {
 } from "@/zod/collection.zod";
 import { createTRPCRouter, publicProcedure } from "../init";
 import collectionProcedure from "../procedures/collection.procedure";
-import z from "zod";
 import collectionService from "../services/collection.service";
 
 const collectionRouter = createTRPCRouter({
