@@ -1,0 +1,104 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PLAN {
+  BASIC
+  PRO
+  PREMIUM
+  ULTIMATE
+}
+
+enum TESTIMONIALS_TYPE {
+  TEXT
+  VIDEO
+}
+
+enum TESTIMONIAL_STATUS {
+  NORMAL
+  HIGHLIGHTED
+  LIKED
+  SPAM
+  ARCHIVED
+}
+
+enum TESTIMONIAL_LANGUAGE {
+  ENGLISH
+  GERMAN
+  CHINESE
+  JAPANESE
+  KOREAN
+  ARABIC
+}
+
+enum TESTIMONIAL_THEME {
+  LIGHT
+  DARK
+}
+
+model User {
+  id             String  @id @default(cuid())
+  name           String
+  email          String  @unique
+  password       String?
+  plan           PLAN    @default(BASIC)
+  authProviderId String?
+  authProvider   String?
+  image          String?
+
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  collections Collection[]
+}
+
+model Collection {
+  id                    String               @id @default(cuid())
+  name                  String
+  slug                  String               @unique
+  logo                  String
+  title                 String
+  description           String?
+  collectStars          Boolean              @default(true)
+  collectUserMail       Boolean              @default(false)
+  collectUserRole       Boolean              @default(false)
+  collectUserCompany    Boolean              @default(false)
+  collectUserSocialLink Boolean              @default(false)
+  language              TESTIMONIAL_LANGUAGE @default(ENGLISH)
+  theme                 TESTIMONIAL_THEME    @default(LIGHT)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  testimonials Testimonial[]
+}
+
+model Testimonial {
+  id            String             @id @default(cuid())
+  content       String?
+  giverName     String
+  giverImage    String?
+  type          TESTIMONIALS_TYPE
+  videoUrl      String?
+  stars         Int?
+  email         String?
+  role          String?
+  company       String?
+  socialLink    String?
+  isUserConsent Boolean
+  status        TESTIMONIAL_STATUS @default(NORMAL)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  collectionId String
+  collection   Collection @relation(fields: [collectionId], references: [id])
+}
