@@ -4,7 +4,7 @@ const getCodeExample = (
   selectedTheme: string
 ) => {
   const examples = {
-    react: `import { Testimonials } from 'testimonial-hub';
+    react: `import { Testimonials } from 'testimo-react';
 
 export default function TestimonialsSection() {
   return (
@@ -20,7 +20,7 @@ export default function TestimonialsSection() {
 
 'use client';
 
-import { Testimonials } from 'testimonial-hub';
+import { Testimonials } from 'testimo-react';
 
 export default function TestimonialsSection() {
   return (
@@ -31,7 +31,7 @@ export default function TestimonialsSection() {
   );
 }`,
 
-    remix: `import { Testimonials } from 'testimonial-hub';
+    remix: `import { Testimonials } from 'testimo-react';
 
 export default function TestimonialsRoute() {
   return (
@@ -48,8 +48,8 @@ export default function TestimonialsRoute() {
 
 const getInstallCommand = (framework: string) => {
   const commands = {
-    react: "npm install testimonial-hub",
-    nextjs: "npm install testimonial-hub",
+    react: "npm install testimo-react@latest",
+    nextjs: "npm install testimo-react@latest",
     remix: "npm install @testimonials/react@latest",
     angular:
       "# Coming soon - not yet available\n# Angular support in development",
