@@ -40,23 +40,53 @@ This project also includes an **NPM package** published separately.
 
 ---
 
-## ⚡ Tech Stack
-- **Frontend:** Next.js, React, Tailwind CSS, Shadcn UI, Framer Motion  
-- **Backend:** Node.js / Next.js API Routes  
-- **Database:** MongoDB / Prisma / Mongoose  
-- **AI Integration:** OpenAI, LangChain  
-- **Deployment:** Vercel, Docker  
-- **Other Tools:** Razorpay, Auth.js, Arcjet, ImageKit  
+## 📦 Tech Stack
+- **Frontend**: Next.js + Tailwind CSS  
+- **Backend**: Next.js API Routes, PostgreSQL  
+- **Database ORM**: Prisma  
+- **Storage**: AWS S3  
+- **Containerization**: Docker & Docker Compose  
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Getting Started
+
+### 1. Clone the repository
 ```bash
-# Clone the repo
-git clone https://github.com/your-username/project-name.git
+git clone https://github.com/sagar-yenkure/Testimo.git
+cd testimo
+```
 
-# Install dependencies
+## 2. Run with Docker
+Make sure you have Docker & Docker Compose installed.
+Then run:
+```bash
+docker compose up -d
+```
+
+## 3. Setup Environment Variables
+Create a .env file in the project root with the following values:
+```bash
+NEXT_PUBLIC_HOST="https://localhost:3000"
+
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres-testimo
+
+AUTH_SECRET=""
+
+# AWS Keys
+AMAZON_REGION=""
+AMAZON_ACCESS_KEY_ID=""
+AMAZON_SECRET_ACCESS_KEY=""
+AMAZON_BUCKET_NAME="testimo"
+```
+
+## 4. Run Migrations
+```bash
+npx prisma migrate dev
+```
+
+## 5. Start Development
+```bash
 npm install
-
-# Run locally
 npm run dev
+```
