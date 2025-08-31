@@ -14,7 +14,7 @@ This project is currently a **resume/portfolio project** and open to contributio
 1. Fork the repository and create a new branch (`feature/your-feature` or `fix/your-bug`).
 2. Make sure your code is clean, documented, and tested.
 3. Follow the existing coding style and conventions.
-4. Submit a pull request with a clear description of your changes.
+4. Submit a pull request in dev with a clear description of your changes.
 5. Add yourself to the `CONTRIBUTORS.md` file.
 
 ## Code of Conduct
