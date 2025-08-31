@@ -1,5 +1,5 @@
 
-# PostgreSQL with UI (pgAdmin) Docker Compose file
+# PostgreSQL with Docker Compose file
 version: '3.8'
 
 services:
@@ -10,7 +10,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: postgres-testimo
     ports:
       - "5432:5432"
     volumes:
