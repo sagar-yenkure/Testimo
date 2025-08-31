@@ -1,0 +1,33 @@
+# Contributing Guidelines
+
+We’re glad you’re interested in contributing!  
+This project is currently a **resume/portfolio project** and open to contributions for **learning, practice, and collaboration**.  
+
+## How You Can Contribute
+- Report bugs or issues
+- Suggest new features or improvements
+- Fix existing issues
+- Improve documentation
+- Share feedback on usability
+
+## Development Guidelines
+1. Fork the repository and create a new branch (`feature/your-feature` or `fix/your-bug`).
+2. Make sure your code is clean, documented, and tested.
+3. Follow the existing coding style and conventions.
+4. Submit a pull request with a clear description of your changes.
+5. Add yourself to the `CONTRIBUTORS.md` file.
+
+## Code of Conduct
+- Be respectful and professional.
+- Focus on collaboration and learning.
+- No spamming, trolling, or irrelevant content.
+
+## Legal & Ownership Notes
+- The project is under the **Apache 2.0 License**.  
+- By contributing, you agree that:
+  - You do **not** gain ownership, equity, or revenue rights in the project.  
+  - Your contributions may be used in the open-source project and future SaaS evolution.  
+  - Ownership of the idea, name, and direction remains with the original creator.  
+
+## Questions?
+Open an issue or reach out to the project owner.  
