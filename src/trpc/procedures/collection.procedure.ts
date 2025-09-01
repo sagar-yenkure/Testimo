@@ -17,7 +17,7 @@ import { revalidatePath } from "next/cache";
 const collectionProcedure = {
   createPreSignedUrl: async (ctx: Context, input: presSignedUrlData) => {
     const command = new PutObjectCommand({
-      Bucket: AWS_KEYS.bucket,
+      Bucket: AWS_KEYS.AMAZON_BUCKET_NAME,
       ContentType: input.type,
       Key: input.key,
     });
