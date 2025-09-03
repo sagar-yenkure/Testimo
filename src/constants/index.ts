@@ -16,19 +16,11 @@ import {
   SiX,
   SiShopify,
   SiHubspot,
-  SiStripe,
-  SiNotion,
-  SiFigma,
-  SiVercel,
-  SiLinear,
-  SiZoom,
-  SiAsana,
-  SiTrello,
-  SiGithub,
   SiFacebook,
   SiApple,
 } from "react-icons/si";
 import { TESTIMONIAL_LANGUAGE } from "../../prisma/generated/prisma";
+import { DATA_TYPE, TESTIMONIALS_TYPE } from "testimo-react";
 
 export const AWS_KEYS = {
   region: process.env.AMAZON_REGION,
@@ -71,13 +63,13 @@ export const LanguageOptions: {
   value: TESTIMONIAL_LANGUAGE;
   code: string;
 }[] = [
-    { label: "English", value: TESTIMONIAL_LANGUAGE.ENGLISH, code: "en" },
-    { label: "German", value: TESTIMONIAL_LANGUAGE.GERMAN, code: "de" },
-    { label: "Chinese", value: TESTIMONIAL_LANGUAGE.CHINESE, code: "zh" },
-    { label: "Japanese", value: TESTIMONIAL_LANGUAGE.JAPANESE, code: "ja" },
-    { label: "Korean", value: TESTIMONIAL_LANGUAGE.KOREAN, code: "ko" },
-    { label: "Arabic", value: TESTIMONIAL_LANGUAGE.ARABIC, code: "ar" },
-  ];
+  { label: "English", value: TESTIMONIAL_LANGUAGE.ENGLISH, code: "en" },
+  { label: "German", value: TESTIMONIAL_LANGUAGE.GERMAN, code: "de" },
+  { label: "Chinese", value: TESTIMONIAL_LANGUAGE.CHINESE, code: "zh" },
+  { label: "Japanese", value: TESTIMONIAL_LANGUAGE.JAPANESE, code: "ja" },
+  { label: "Korean", value: TESTIMONIAL_LANGUAGE.KOREAN, code: "ko" },
+  { label: "Arabic", value: TESTIMONIAL_LANGUAGE.ARABIC, code: "ar" },
+];
 
 export const LanguageCodes: Record<
   TESTIMONIAL_LANGUAGE,
@@ -90,95 +82,6 @@ export const LanguageCodes: Record<
   [TESTIMONIAL_LANGUAGE.KOREAN]: "ko",
   [TESTIMONIAL_LANGUAGE.ARABIC]: "ar",
 };
-
-export const companies = [
-  { name: "Shopify", Icon: SiShopify },
-  { name: "Stripe", Icon: SiStripe },
-  { name: "Notion", Icon: SiNotion },
-  { name: "Figma", Icon: SiFigma },
-  { name: "Vercel", Icon: SiVercel },
-  { name: "Linear", Icon: SiLinear },
-  { name: "Zoom", Icon: SiZoom },
-  { name: "Asana", Icon: SiAsana },
-  { name: "Trello", Icon: SiTrello },
-  { name: "GitHub", Icon: SiGithub },
-];
-
-export const testimonials = [
-  {
-    type: "video",
-    quote:
-      "Testimo completely transformed how we collect and display customer feedback. The setup was incredibly easy and our conversion rates have increased by 35%.",
-    author: "Sarah Martinez",
-    title: "Marketing Director",
-    company: "TechFlow Solutions",
-    avatar: "SM",
-    rating: 5,
-    featured: true,
-  },
-  {
-    type: "text",
-    quote:
-      "The analytics dashboard gives us insights we never had before. We can see exactly which testimonials are driving the most conversions.",
-    author: "David Kim",
-    title: "Growth Manager",
-    company: "StartupHub",
-    avatar: "DK",
-    rating: 5,
-    featured: false,
-  },
-  {
-    type: "text",
-    quote:
-      "Customer support is outstanding. They helped us customize the widget to match our brand perfectly. Highly recommended!",
-    author: "Emily Chen",
-    title: "Founder",
-    company: "DesignCo",
-    avatar: "EC",
-    rating: 5,
-    featured: false,
-  },
-  {
-    type: "video",
-    quote:
-      "We've tried other testimonial tools before, but Testimo is by far the best. The auto-import feature saves us hours every week.",
-    author: "Michael Rodriguez",
-    title: "Product Manager",
-    company: "InnovateX",
-    avatar: "MR",
-    rating: 5,
-    featured: true,
-  },
-  {
-    type: "text",
-    quote:
-      "The moderation system is perfect. We can review and approve testimonials quickly, and the spam protection works great.",
-    author: "Jessica Taylor",
-    title: "Content Manager",
-    company: "ContentPro",
-    avatar: "JT",
-    rating: 5,
-    featured: false,
-  },
-  {
-    type: "text",
-    quote:
-      "Integration with our existing tools was seamless. The webhook support allows us to automate our entire workflow.",
-    author: "Alex Johnson",
-    title: "Tech Lead",
-    company: "DevTools",
-    avatar: "AJ",
-    rating: 5,
-    featured: false,
-  },
-];
-
-export const stats = [
-  { value: "4.9/5", label: "Average Rating", color: "text-blue-600" },
-  { value: "10K+", label: "Happy Users", color: "text-purple-600" },
-  { value: "500K+", label: "Testimonials", color: "text-green-600" },
-  { value: "40%", label: "Avg. Conversion Lift", color: "text-orange-600" },
-];
 
 export const optionalFields = [
   {
@@ -403,5 +306,119 @@ export const ConfigurationOptions = [
     type: "number",
     default: "6",
     description: "Maximum number of testimonials to show",
+  },
+];
+
+export const mockTestimonials: DATA_TYPE[] = [
+  {
+    content:
+      "This product completely transformed our workflow. The team adoption was seamless and the results were immediate. Highly recommend to any growing business.",
+    giverName: "Sarah Chen",
+    giverImage:
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 5,
+    email: "sarah@techcorp.com",
+    role: "Product Manager",
+    company: "TechCorp Solutions",
+    socialLink: "https://linkedin.com/in/sarahchen",
+  },
+  {
+    content:
+      "Amazing experience from start to finish. The customer service team went above and beyond to ensure our success.",
+    giverName: "Michael Rodriguez",
+    giverImage:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 5,
+    email: "m.rodriguez@innovate.com",
+    role: "CEO",
+    company: "Innovate Labs",
+    socialLink: "https://twitter.com/mrodriguez",
+  },
+  {
+    content:
+      "Simple, powerful, and exactly what we needed. The interface is intuitive and the features are robust.",
+    giverName: "David Kim",
+    giverImage:
+      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 4,
+    email: "david.kim@startupx.com",
+    role: "Founder",
+    company: "StartupX",
+  },
+  {
+    content:
+      "Outstanding support and an even better product. Our productivity increased by 40% in just two months.",
+    giverName: "Lisa Wang",
+    giverImage:
+      "https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 5,
+    email: "lisa@growthco.com",
+    role: "Operations Manager",
+    company: "GrowthCo",
+    socialLink: "https://twitter.com/lisawang",
+  },
+  {
+    content:
+      "Game-changing solution for our team. The automation features alone saved us 20 hours per week.",
+    giverName: "James Miller",
+    giverImage:
+      "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 5,
+    role: "CTO",
+    company: "TechVision",
+  },
+  {
+    content:
+      "Exceptional quality and reliability. We've been using this for over a year with zero issues.",
+    giverName: "Rachel Green",
+    giverImage:
+      "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "VIDEO" as TESTIMONIALS_TYPE,
+    videoUrl: "https://example.com/testimonial-video-2",
+    stars: 5,
+    email: "rachel@enterprise.com",
+    role: "Head of Product",
+    company: "Enterprise Solutions",
+    socialLink: "https://linkedin.com/in/rachelgreen",
+  },
+  {
+    content:
+      "The best investment we made this year. Streamlined our processes and improved team collaboration significantly.",
+    giverName: "Alex Johnson",
+    giverImage:
+      "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 5,
+    role: "Project Manager",
+    company: "Creative Studios",
+  },
+  {
+    content:
+      "Incredible value for money. The features keep getting better with each update.",
+    giverName: "Maria Garcia",
+    giverImage:
+      "https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 4,
+    email: "maria@designhub.com",
+    role: "Design Lead",
+    company: "DesignHub",
+    socialLink: "https://dribbble.com/mariagarcia",
+  },
+  {
+    content:
+      "User-friendly interface with powerful capabilities. Perfect balance of simplicity and functionality.",
+    giverName: "Thomas Brown",
+    giverImage:
+      "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=150",
+    type: "TEXT" as TESTIMONIALS_TYPE,
+    stars: 5,
+    role: "Senior Developer",
+    company: "CodeCraft",
   },
 ];

@@ -1,17 +1,19 @@
-import { CustomerFeedback } from "@/components/landingPage-ui/customer-feedback";
-import { HeroSection } from "@/components/landingPage-ui/hero-section";
-import { IntegrationsSection } from "@/components/landingPage-ui/integrations-section";
-import { TrustedBy } from "@/components/landingPage-ui/trusted-by";
+import HeroSection from "@/components/landingPage-ui/hero-section";
+import StatsSection from "@/components/landingPage-ui/StatsSection";
+import FeaturesSection from "@/components/landingPage-ui/FeaturesSection";
+import Live_demo from "@/components/landingPage-ui/Live-demo";
+import SocialProof from "@/components/landingPage-ui/SocialProof";
+import CTA from "@/components/landingPage-ui/CTA";
 
-const Home = async () => {
+export default function LandingPage() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <HeroSection />
-      <TrustedBy />
-      <IntegrationsSection />
-      <CustomerFeedback />
-    </main>
+      <StatsSection />
+      <FeaturesSection />
+      <Live_demo />
+      <SocialProof />
+      <CTA />
+    </div>
   );
-};
-
-export default Home;
+}
