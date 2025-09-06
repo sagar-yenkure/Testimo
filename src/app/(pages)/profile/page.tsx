@@ -8,6 +8,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Profile",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/profile`
+  }
 };
 
 export default async function ProfilePage() {

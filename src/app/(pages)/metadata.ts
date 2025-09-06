@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 
 const metadata: Metadata = {
-    title: "Testimo – Collect, Manage & Showcase Testimonials",
+    title: {
+        default: "Testimo – Collect, Manage & Showcase Testimonials",
+        template: "%s | – Collect, Manage & Showcase Testimonials", // page titles become "PageName | Testimo"
+    },
     description:
         "Testimo helps you collect, organize, and showcase testimonials easily. Boost your brand’s credibility with a beautiful and modern testimonial manager.",
     keywords: [
@@ -14,10 +17,7 @@ const metadata: Metadata = {
     ],
     authors: [{ name: "Sagar Yenkure" }],
     openGraph: {
-        title: {
-            default: "Testimo – Collect, Manage & Showcase Testimonials",
-            template: "%s | Testimo Collect, Manage & Showcase Testimonials ",
-        },
+        title: "Testimo – Collect, Manage & Showcase Testimonials",
         description:
             "Collect and showcase testimonials effortlessly with Testimo. Boost your brand with authentic customer stories.",
         url: "https://testimo-love.vercel.app",

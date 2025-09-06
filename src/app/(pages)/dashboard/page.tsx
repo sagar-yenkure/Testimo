@@ -10,6 +10,9 @@ import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Dashboard",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/dashboard`
+  },
 };
 
 const Dashboard = async () => {

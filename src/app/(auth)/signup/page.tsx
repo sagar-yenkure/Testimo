@@ -5,6 +5,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Sign Up",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/signup`
+  }
 }
 
 const SignUpPage = () => {
