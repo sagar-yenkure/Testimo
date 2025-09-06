@@ -7,7 +7,7 @@ import { trpcRouter } from "./router";
 import { createTRPCContext } from "./context";
 
 export const getQueryClient = cache(makeQueryClient);
-const caller = createCallerFactory(trpcRouter)(createTRPCContext);
+const caller = createCallerFactory(trpcRouter)(() => createTRPCContext({ req: undefined as unknown as Request }));
 export const { trpc, HydrateClient } = createHydrationHelpers<
   typeof trpcRouter
 >(caller, getQueryClient);

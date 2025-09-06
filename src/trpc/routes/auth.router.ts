@@ -1,9 +1,11 @@
 import authProcedure from "../procedures/auth.procedure";
 import { registerZod } from "@/zod/auth.zod";
 import { createTRPCRouter, publicProcedure } from "../init";
+import { rateLimiter } from "../middleware/rateLimiter";
 
 const authRouter = createTRPCRouter({
   register: publicProcedure
+    .use(rateLimiter)
     .input(registerZod)
     .mutation(async ({ input }) => authProcedure.registerUser(input)),
 });

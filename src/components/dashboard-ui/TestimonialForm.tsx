@@ -25,10 +25,12 @@ import { TestimonialFormData, testimonialSchema } from "@/zod/testimonial.zod";
 import toast from "react-hot-toast";
 import { Collection } from "../../../prisma/generated/prisma";
 
+type TestimonialWithoutUserId = Omit<Collection, "userId">;
+
 export default function TestimonialForm({
   collection,
 }: {
-  collection: Collection;
+  collection: TestimonialWithoutUserId
 }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [testimonialType, setTestimonialType] = useState<TESTIMONIALS_TYPE>(
@@ -299,8 +301,8 @@ export default function TestimonialForm({
                   if (type === TESTIMONIALS_TYPE.TEXT) resetVideoRecording();
                 }}
                 className={`p-4 border-2 rounded-xl transition-colors ${testimonialType === type
-                    ? "border-blue-400 bg-blue-50 dark:border-gray-500 dark:bg-gray-800"
-                    : "border-gray-200 dark:border-gray-700 dark:bg-gray-800"
+                  ? "border-blue-400 bg-blue-50 dark:border-gray-500 dark:bg-gray-800"
+                  : "border-gray-200 dark:border-gray-700 dark:bg-gray-800"
                   }`}
               >
                 {type === TESTIMONIALS_TYPE.TEXT ? (
@@ -310,8 +312,8 @@ export default function TestimonialForm({
                 )}
                 <span
                   className={`text-sm font-medium ${type === TESTIMONIALS_TYPE.TEXT
-                      ? "text-blue-700 dark:text-gray-200"
-                      : "text-gray-700 dark:text-gray-300"
+                    ? "text-blue-700 dark:text-gray-200"
+                    : "text-gray-700 dark:text-gray-300"
                     }`}
                 >
                   {type === TESTIMONIALS_TYPE.TEXT ? "Text" : "Video"}

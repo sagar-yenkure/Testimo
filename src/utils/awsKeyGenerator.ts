@@ -1,6 +1,7 @@
-import { AWS_KEYS } from "@/constants";
+import config from "../config";
+
 
 const awsKeyGenerator = (key: string) =>
-  `https://${AWS_KEYS.bucket}.s3.${AWS_KEYS.region}.amazonaws.com/${key}`;
+  `https://${config.AWS_KEYS.bucket}.s3.${config.AWS_KEYS.region}.amazonaws.com/${key}`;
 
 export default awsKeyGenerator;
