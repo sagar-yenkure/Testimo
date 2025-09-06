@@ -1,6 +1,11 @@
 import AuthForm from "@/components/auth-ui/AuthForm";
 import { Heart } from "lucide-react";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Sign Up",
+}
 
 const SignUpPage = () => {
   return (
