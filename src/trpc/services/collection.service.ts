@@ -42,6 +42,9 @@ const collectionService = {
       where: {
         id: input.id,
       },
+      omit: {
+        userId: true,
+      }
     });
   },
 };

@@ -10,6 +10,7 @@ import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useRouter } from "next/navigation";
 import { LogOut, Settings, User } from "lucide-react";
+import { signOut } from "next-auth/react";
 
 const UserAvatar = ({
   user,
@@ -69,8 +70,14 @@ const UserAvatar = ({
           onClick={handleLogout}
           className="cursor-pointer text-red-600 focus:text-red-600"
         >
-          <LogOut className="mr-2 h-4 w-4" />
-          <span>Log out</span>
+          <Button
+
+            variant="destructive"
+            className="w-full"
+            onClick={() => signOut()}
+          >
+            Log Out
+          </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
