@@ -70,11 +70,10 @@ const TabGroup: React.FC<TabGroupProps> = ({
                 option.value as TESTIMONIALS_THEME | TESTIMONIALS_VARIANT
               )
             }
-            className={`relative px-4 py-3 rounded-lg font-medium text-sm transition-all duration-300 ease-out min-w-[90px] ${
-              isActive
-                ? colors[colorScheme].active
-                : colors[colorScheme].inactive
-            }`}
+            className={`relative px-4 py-3 rounded-lg font-medium text-sm transition-all duration-300 ease-out min-w-[90px] ${isActive
+              ? colors[colorScheme].active
+              : colors[colorScheme].inactive
+              }`}
           >
             {isActive && (
               <motion.div

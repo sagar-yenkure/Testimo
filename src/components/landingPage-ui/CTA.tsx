@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 
 const CTA = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-gray-900 to-gray-800">
+    <section className="py-20  bg-gradient-to-r from-blue-600 to-purple-600">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ const CTA = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3"
+                className=" text-white px-8 py-3"
               >
                 <span>
                   Start Free Trial

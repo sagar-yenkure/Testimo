@@ -11,7 +11,7 @@ import { signOut, useSession } from "next-auth/react";
 const menuItems = [
   { label: "Features", href: "#features" },
   { label: "Demo", href: "#demo" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Pricing", href: "#pricing" },
 ];
 
 export function Header() {
