@@ -35,46 +35,40 @@ export function Header() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {menuItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
 
             {session ? (
-              <>
-                <UserAvatar user={session.user} />
-                <Button
-                  size="sm"
-                  variant="destructive"
-                  className="ml-2 hover:cursor-pointer"
-                  onClick={() => signOut()}
-                >
-                  Log Out
-                </Button>
-              </>
+              <UserAvatar user={session.user} />
             ) : (
-              <div className="flex gap-2">
-                <Link href="/signin" passHref>
-                  <Button asChild size="lg" className="px-4 py-3">
-                    <span>Sign In</span>
-                  </Button>
-                </Link>
-
-                <Link href="/signup" passHref>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3"
+              <>
+                {menuItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-gray-600 hover:text-gray-900 transition-colors"
                   >
-                    <span>Get Started</span>
-                  </Button>
-                </Link>
-              </div>
+                    {item.label}
+                  </Link>
+                ))}
+
+
+                <div className="flex gap-2">
+                  <Link href="/signin" passHref>
+                    <Button asChild size="lg" className="px-4 py-3">
+                      <span>Sign In</span>
+                    </Button>
+                  </Link>
+
+                  <Link href="/signup" passHref>
+                    <Button
+                      asChild
+                      size="lg"
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-3"
+                    >
+                      <span>Get Started</span>
+                    </Button>
+                  </Link>
+                </div>
+              </>
             )}
           </div>
 

@@ -30,9 +30,9 @@ const UserAvatar = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="relative h-10 w-10 rounded-full hover:cursor-pointer"
+          className="relative h-12 w-12 rounded-full hover:cursor-pointer"
         >
-          <Avatar className="h-10 w-10">
+          <Avatar className="h-12 w-12">
             <AvatarImage src={user.image} alt={user.name} />
             <AvatarFallback className="text-black">
               {user.name.slice(0, 2).toUpperCase() ?? "NA"}
