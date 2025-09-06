@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "../ui/badge";
 import {
-  Testimonials,
+  // Testimonials,
   TESTIMONIALS_THEME,
   TESTIMONIALS_VARIANT,
 } from "testimo-react";
-import { mockTestimonials } from "@/constants";
+// import { mockTestimonials } from "@/constants";
 
 interface TabOption {
   value: string;
