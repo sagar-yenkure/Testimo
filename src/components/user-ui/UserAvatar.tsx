@@ -9,7 +9,7 @@ import {
 import { Button } from "../ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useRouter } from "next/navigation";
-import { LogOut, Settings, User } from "lucide-react";
+import { Settings, User } from "lucide-react";
 import { signOut } from "next-auth/react";
 
 const UserAvatar = ({

@@ -8,16 +8,17 @@ import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { apiResponse } from "@/utils/apiResponse";
 import { s3 } from "@/lib/aws";
-import { AWS_KEYS, PUT_OBJECT_EXP } from "@/constants";
+import { PUT_OBJECT_EXP } from "@/constants";
 import collectionService from "../services/collection.service";
 import { Context } from "../context";
 import awsKeyGenerator from "@/utils/awsKeyGenerator";
 import { revalidatePath } from "next/cache";
+import config from "@/config";
 
 const collectionProcedure = {
   createPreSignedUrl: async (ctx: Context, input: presSignedUrlData) => {
     const command = new PutObjectCommand({
-      Bucket: AWS_KEYS.bucket,
+      Bucket: config.AWS_KEYS.bucket,
       ContentType: input.type,
       Key: input.key,
     });

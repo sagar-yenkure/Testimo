@@ -22,12 +22,8 @@ import {
 import { TESTIMONIAL_LANGUAGE } from "../../prisma/generated/prisma";
 import { DATA_TYPE, TESTIMONIALS_TYPE } from "testimo-react";
 
-export const AWS_KEYS = {
-  region: process.env.AMAZON_REGION,
-  accessKeyId: process.env.AMAZON_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AMAZON_SECRET_ACCESS_KEY,
-  bucket: process.env.AMAZON_BUCKET_NAME,
-};
+export const RATE_LIMIT = 10; // max requests limit 
+export const WINDOW_SECONDS = 60; // time window in seconds
 
 export const JWT_EXPIRY = 15 * 24 * 60 * 60; // 15 days
 
@@ -63,13 +59,13 @@ export const LanguageOptions: {
   value: TESTIMONIAL_LANGUAGE;
   code: string;
 }[] = [
-  { label: "English", value: TESTIMONIAL_LANGUAGE.ENGLISH, code: "en" },
-  { label: "German", value: TESTIMONIAL_LANGUAGE.GERMAN, code: "de" },
-  { label: "Chinese", value: TESTIMONIAL_LANGUAGE.CHINESE, code: "zh" },
-  { label: "Japanese", value: TESTIMONIAL_LANGUAGE.JAPANESE, code: "ja" },
-  { label: "Korean", value: TESTIMONIAL_LANGUAGE.KOREAN, code: "ko" },
-  { label: "Arabic", value: TESTIMONIAL_LANGUAGE.ARABIC, code: "ar" },
-];
+    { label: "English", value: TESTIMONIAL_LANGUAGE.ENGLISH, code: "en" },
+    { label: "German", value: TESTIMONIAL_LANGUAGE.GERMAN, code: "de" },
+    { label: "Chinese", value: TESTIMONIAL_LANGUAGE.CHINESE, code: "zh" },
+    { label: "Japanese", value: TESTIMONIAL_LANGUAGE.JAPANESE, code: "ja" },
+    { label: "Korean", value: TESTIMONIAL_LANGUAGE.KOREAN, code: "ko" },
+    { label: "Arabic", value: TESTIMONIAL_LANGUAGE.ARABIC, code: "ar" },
+  ];
 
 export const LanguageCodes: Record<
   TESTIMONIAL_LANGUAGE,
