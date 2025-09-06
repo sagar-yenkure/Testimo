@@ -10,7 +10,7 @@ const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div id="pricing" className="min-h-screen bg-white">
       <PricingHeader isYearly={isYearly} setIsYearly={setIsYearly} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

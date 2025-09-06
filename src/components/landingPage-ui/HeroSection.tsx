@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-const HeroSection = () => {
+const Hero_section = () => {
   return (
     <section className="pt-24 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,4 +54,4 @@ const HeroSection = () => {
     </section>
   );
 };
-export default HeroSection;
+export default Hero_section;
