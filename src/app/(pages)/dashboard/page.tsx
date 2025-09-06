@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import OverviewStats from "@/components/dashboard-ui/OverviewStats";
 import CurrentPlan from "@/components/CurrentPlan";
 import CollectionsGrid from "@/components/dashboard-ui/CollectionsGrid";
@@ -7,9 +8,13 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
+
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
-  if (!session) return redirect("/signin")
+  if (!session?.user) return redirect("/signin")
 
   const collections = await trpc.collection.Collections();
 

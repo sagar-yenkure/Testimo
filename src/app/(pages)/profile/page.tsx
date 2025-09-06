@@ -4,10 +4,15 @@ import SecuritySection from "@/components/user-ui/SecuritySection";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile",
+};
 
 export default async function ProfilePage() {
   const session = await getServerSession(authOptions);
-  if (!session) return redirect("/signin")
+  if (!session?.user) return redirect("/signin")
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">

@@ -14,7 +14,10 @@ const metadata: Metadata = {
     ],
     authors: [{ name: "Sagar Yenkure" }],
     openGraph: {
-        title: "Testimo – Collect, Manage & Showcase Testimonials",
+        title: {
+            default: "Testimo – Collect, Manage & Showcase Testimonials",
+            template: "%s | Testimo Collect, Manage & Showcase Testimonials ",
+        },
         description:
             "Collect and showcase testimonials effortlessly with Testimo. Boost your brand with authentic customer stories.",
         url: "https://testimo-love.vercel.app",
@@ -29,6 +32,10 @@ const metadata: Metadata = {
         ],
         locale: "en_US",
         type: "website",
+        countryName: "India",
+    },
+    alternates: {
+        canonical: process.env.NEXT_PUBLIC_HOST,
     },
     twitter: {
         card: "summary_large_image",

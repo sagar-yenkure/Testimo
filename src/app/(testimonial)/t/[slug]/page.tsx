@@ -35,6 +35,7 @@ export async function generateMetadata({
         ? [{ url: collection.logo, alt: collection.title }]
         : [],
     },
+    alternates: { canonical: `${process.env.NEXT_PUBLIC_HOST}/t/${collection.id}` },
     twitter: {
       card: "summary_large_image",
       title: collection.title,
