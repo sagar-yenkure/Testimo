@@ -10,6 +10,9 @@ import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Dashboard",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/dashboard`
+  },
 };
 
 const Dashboard = async () => {
@@ -19,7 +22,7 @@ const Dashboard = async () => {
   const collections = await trpc.collection.Collections();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen pt-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
       <div className="max-w-7xl container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <OverviewStats collections={collections.data} />
         <CurrentPlan />

@@ -46,8 +46,8 @@ const AuthForm = ({ type, className, ...props }: LoginFormProps) => {
   const onSubmit = async (data: SignInSchemaType | SignUpSchemaType) => {
     if (isSignIn) {
       const res = await login(data.email, data.password);
-      if (res.ok) toast.success(res.message);
-      else toast.error(res.message);
+      if (!res.ok) return toast.error(res.message);
+      else return toast.success(res.message);
     } else {
       mutate({ ...(data as SignUpSchemaType) });
     }
@@ -146,8 +146,8 @@ const AuthForm = ({ type, className, ...props }: LoginFormProps) => {
               {isPending || loginPending
                 ? "loading"
                 : isSignIn
-                ? "Login"
-                : "Sign Up"}
+                  ? "Login"
+                  : "Sign Up"}
             </Button>
 
             {/* Divider */}

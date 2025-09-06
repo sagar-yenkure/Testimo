@@ -8,6 +8,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Profile",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/profile`
+  }
 };
 
 export default async function ProfilePage() {
@@ -15,7 +18,7 @@ export default async function ProfilePage() {
   if (!session?.user) return redirect("/signin")
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen pt-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Tabs Section */}
       <div className="max-w-7xl container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-4">
         <ProfileSection />

@@ -5,6 +5,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Sign In",
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/signin`
+  }
 }
 
 const SignInPage = async () => {

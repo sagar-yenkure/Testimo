@@ -20,7 +20,7 @@ const CollectionDetailPage = async ({ params }: CollectionDetailPageProps) => {
   const { id: collectionId } = await params;
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="bg-gradient-to-br pt-24 from-blue-50 via-white to-purple-50">
       <div className="flex max-w-7xl mx-auto">
         <SidebarClient collectionId={collectionId} />
       </div>
