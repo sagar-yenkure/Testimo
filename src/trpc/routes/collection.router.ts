@@ -27,7 +27,7 @@ const collectionRouter = createTRPCRouter({
     ),
 
   Collections: publicProcedure
-    .use(rateLimiter)
+    // .use(rateLimiter)
     .use(isLogged)
     .query(({ ctx }) =>
       collectionProcedure.getCollections(ctx)

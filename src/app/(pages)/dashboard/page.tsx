@@ -20,12 +20,7 @@ const DashboardPage = async () => {
 
   let collections: { data: collectionWithTestimonials[] } = { data: [] };
 
-  try {
-    collections = await trpc.collection.Collections();
-  } catch (error) {
-    console.error("Failed to fetch collections:", error);
-    throw error;
-  }
+  collections = await trpc.collection.Collections();
 
   return (
     <div className="min-h-screen pt-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
