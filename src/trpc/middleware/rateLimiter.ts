@@ -16,7 +16,7 @@ export const rateLimiter = middleware(async ({ ctx, next, path }) => {
     if (current > RATE_LIMIT) {
         throw new TRPCError({
             code: "TOO_MANY_REQUESTS",
-            message: `Rate limit exceeded. Max ${RATE_LIMIT} requests per ${WINDOW_SECONDS} seconds.`,
+            message: `Rate limit exceeded, try after some time.`,
         });
     }
 
