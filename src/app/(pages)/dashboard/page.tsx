@@ -19,8 +19,7 @@ const DashboardPage = async () => {
   if (!session?.user) return redirect("/signin")
 
   const collections = await trpc.collection.Collections();
-  console.log("collections", collections);
-  if (!collections.success) throw new Error("Error in showing dashboard");
+  if (!collections.success) throw new Error(collections.message);
 
   return (
     <div className="min-h-screen pt-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
