@@ -14,6 +14,7 @@ const t = initTRPC.context<Context>().create({
     });
 
     // Transform internal errors into generic messages for the client
+    // © 2025 Sagar Yenkure. All Rights Reserved.
     if (error.code === "INTERNAL_SERVER_ERROR") {
       return {
         ...shape,
