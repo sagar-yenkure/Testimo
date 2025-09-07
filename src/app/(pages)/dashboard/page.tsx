@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import OverviewStats from "@/components/dashboard-ui/OverviewStats";
 import CurrentPlan from "@/components/CurrentPlan";
-import CollectionsGrid from "@/components/dashboard-ui/CollectionsGrid";
+import CollectionsGrid, { collectionWithTestimonials } from "@/components/dashboard-ui/CollectionsGrid";
 import { trpc } from "@/trpc/server";
 import { Suspense } from "react";
 import { getServerSession } from "next-auth";
@@ -19,7 +19,7 @@ const Dashboard = async () => {
   const session = await getServerSession(authOptions);
   if (!session?.user) return redirect("/signin")
 
-  let collections: any = { data: [] };
+  let collections: { data: collectionWithTestimonials[] } = { data: [] };
 
   try {
     collections = await trpc.collection.Collections();
