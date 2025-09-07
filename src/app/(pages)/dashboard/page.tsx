@@ -3,7 +3,6 @@ import OverviewStats from "@/components/dashboard-ui/OverviewStats";
 import CurrentPlan from "@/components/CurrentPlan";
 import CollectionsGrid, { collectionWithTestimonials } from "@/components/dashboard-ui/CollectionsGrid";
 import { trpc } from "@/trpc/server";
-import { Suspense } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -11,13 +10,13 @@ import { redirect } from "next/navigation";
 export const metadata: Metadata = {
   title: "Dashboard",
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_HOST}/dashboard`
+    canonical: `${process.env.NEXT_PUBLIC_HOST}/dashboard`,
   },
 };
 
-const Dashboard = async () => {
+const DashboardPage = async () => {
   const session = await getServerSession(authOptions);
-  if (!session?.user) return redirect("/signin")
+  if (!session?.user) return redirect("/signin");
 
   let collections: { data: collectionWithTestimonials[] } = { data: [] };
 
@@ -25,6 +24,7 @@ const Dashboard = async () => {
     collections = await trpc.collection.Collections();
   } catch (error) {
     console.error("Failed to fetch collections:", error);
+    throw error;
   }
 
   return (
@@ -35,14 +35,6 @@ const Dashboard = async () => {
         <CollectionsGrid collections={collections.data} />
       </div>
     </div>
-  );
-};
-
-const DashboardPage = () => {
-  return (
-    <Suspense fallback={"loading"}>
-      <Dashboard />
-    </Suspense>
   );
 };
 
