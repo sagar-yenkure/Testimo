@@ -23,7 +23,7 @@ import { TESTIMONIAL_LANGUAGE } from "../../prisma/generated/prisma";
 import { DATA_TYPE, TESTIMONIALS_TYPE } from "testimo-react";
 
 export const RATE_LIMIT = 10; // max requests limit 
-export const WINDOW_SECONDS = 60; // time window in seconds
+export const WINDOW_SECONDS = "10 s"; // time window in seconds
 
 export const JWT_EXPIRY = 15 * 24 * 60 * 60; // 15 days
 

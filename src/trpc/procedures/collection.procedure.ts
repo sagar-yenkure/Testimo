@@ -6,7 +6,7 @@ import {
 
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { apiResponse } from "@/utils/apiResponse";
+import { apiError, apiResponse } from "@/utils/apiResponse";
 import { s3 } from "@/lib/aws";
 import { PUT_OBJECT_EXP } from "@/constants";
 import collectionService from "../services/collection.service";
@@ -14,9 +14,18 @@ import { Context } from "../context";
 import awsKeyGenerator from "@/utils/awsKeyGenerator";
 import { revalidatePath } from "next/cache";
 import config from "@/config";
+import { ratelimit } from "../middleware/rateLimitor";
+import { getClientIP } from "@/utils/getClientIP";
 
 const collectionProcedure = {
   createPreSignedUrl: async (ctx: Context, input: presSignedUrlData) => {
+    const { success } = await ratelimit.limit(getClientIP(ctx.req));
+    if (!success) {
+      return apiError(
+        "TOO_MANY_REQUESTS",
+        "Too many registration attempts. Please try again later."
+      );
+    }
     const command = new PutObjectCommand({
       Bucket: config.AWS_KEYS.bucket,
       ContentType: input.type,
@@ -30,6 +39,14 @@ const collectionProcedure = {
     ctx: Context,
     input: collectionSchemaWithLogoStringData
   ) => {
+    const { success } = await ratelimit.limit(getClientIP(ctx.req));
+    if (!success) {
+      return apiError(
+        "TOO_MANY_REQUESTS",
+        "Too many registration attempts. Please try again later."
+      );
+    }
+
     const newCollection = await collectionService.createCollection(ctx, {
       ...input,
       logo: awsKeyGenerator(input.logo),
@@ -41,17 +58,13 @@ const collectionProcedure = {
   getCollections: async (ctx: Context) => {
     if (!ctx.user) return apiResponse([], "User not logged in", false);
 
+    const { success } = await ratelimit.limit(getClientIP(ctx.req));
+    if (!success) return apiResponse([], "Too many attempts. Please try again later.", false)
+
     const collections = await collectionService.getUserCollections(
       ctx.user?.id || ""
     );
     return apiResponse(collections);
-  },
-
-  getCollectionForSubmission: async (collectionId: IdData) => {
-    const collection = await collectionService.getCollectionForSubmission(
-      collectionId
-    );
-    return apiResponse(collection);
   },
 };
 
