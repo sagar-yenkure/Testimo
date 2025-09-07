@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import OverviewStats from "@/components/dashboard-ui/OverviewStats";
 import CurrentPlan from "@/components/CurrentPlan";
-import CollectionsGrid from "@/components/dashboard-ui/CollectionsGrid";
+import CollectionsGrid, { collectionWithTestimonials } from "@/components/dashboard-ui/CollectionsGrid";
 import { trpc } from "@/trpc/server";
 import { Suspense } from "react";
 import { getServerSession } from "next-auth";
@@ -19,7 +19,13 @@ const Dashboard = async () => {
   const session = await getServerSession(authOptions);
   if (!session?.user) return redirect("/signin")
 
-  const collections = await trpc.collection.Collections();
+  let collections: { data: collectionWithTestimonials[] } = { data: [] };
+
+  try {
+    collections = await trpc.collection.Collections();
+  } catch (error) {
+    console.error("Failed to fetch collections:", error);
+  }
 
   return (
     <div className="min-h-screen pt-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
