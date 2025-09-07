@@ -1,4 +1,6 @@
 import { prisma } from "@/lib/prisma";
+import { ratelimit } from "@/trpc/middleware/rateLimitor";
+import { getClientIP } from "@/utils/getClientIP";
 import { NextResponse } from "next/server";
 
 const corsHeaders = {
@@ -7,18 +9,31 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
+
+// this fuunction is to call in testim-react NPM package to fetch highlighted testimonials by collectionId
 export async function GET(
-  _: Request,
+  req: Request,
   context: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await context.params;
+
     if (!id) {
       return NextResponse.json(
         { message: "Bad Request" },
         { status: 400, headers: corsHeaders }
       );
     }
+
+    const { success } = await ratelimit.limit(getClientIP(req));
+    if (!success)
+      return NextResponse.json(
+        {
+          message: "Too many attempts. Please try again later."
+        },
+        { status: 429, headers: corsHeaders }
+      );
+
 
     const testimonials = await prisma.testimonial.findMany({
       where: {

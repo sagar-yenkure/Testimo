@@ -37,6 +37,7 @@ export const testimonialSchema = z
   })
   .superRefine((data, ctx) => {
     // content required if type is TEXT
+    // © 2025 Sagar Yenkure. All Rights Reserved.
     if (data.type === TESTIMONIALS_TYPE.TEXT && !data.content) {
       ctx.addIssue({
         code: "custom",

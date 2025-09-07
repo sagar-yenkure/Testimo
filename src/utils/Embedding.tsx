@@ -42,7 +42,7 @@ export default function TestimonialsRoute() {
   );
 }`,
   };
-
+  // © 2025 Sagar Yenkure. All Rights Reserved.
   return examples[framework as keyof typeof examples];
 };
 
