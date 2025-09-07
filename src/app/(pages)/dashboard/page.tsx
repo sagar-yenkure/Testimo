@@ -19,7 +19,13 @@ const Dashboard = async () => {
   const session = await getServerSession(authOptions);
   if (!session?.user) return redirect("/signin")
 
-  const collections = await trpc.collection.Collections();
+  let collections: any = { data: [] };
+
+  try {
+    collections = await trpc.collection.Collections();
+  } catch (error) {
+    console.error("Failed to fetch collections:", error);
+  }
 
   return (
     <div className="min-h-screen pt-24 bg-gradient-to-br from-blue-50 via-white to-purple-50">
