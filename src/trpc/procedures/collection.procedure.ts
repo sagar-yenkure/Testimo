@@ -39,6 +39,8 @@ const collectionProcedure = {
   },
 
   getCollections: async (ctx: Context) => {
+    if (!ctx.user) return apiResponse([], "User not logged in", false);
+
     const collections = await collectionService.getUserCollections(
       ctx.user?.id || ""
     );
