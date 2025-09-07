@@ -7,9 +7,9 @@ export const apiError = (code: TRPC_ERROR_CODE_KEY, message: string) => {
   });
 };
 
-export function apiResponse<T>(data: T, message = "Success") {
+export function apiResponse<T>(data: T, message = "Success", success: boolean = true) {
   return {
-    success: true,
+    success,
     message,
     data,
   };
