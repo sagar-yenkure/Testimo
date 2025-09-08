@@ -6,4 +6,5 @@ export default {
     bucket: process.env.AMAZON_BUCKET_NAME,
   },
   JWT_SECRET: process.env.JWT_SECRET,
+  CHROME_EXT_ORIGIN: process.env.CHROME_EXT_ORIGIN,
 };

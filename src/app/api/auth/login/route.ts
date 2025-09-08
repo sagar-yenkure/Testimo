@@ -1,12 +1,16 @@
+import config from "@/config";
 import { ratelimit } from "@/trpc/middleware/rateLimitor";
 import authService from "@/trpc/services/auth.service";
 import { generateToken } from "@/utils/generateToken";
 import { getClientIP } from "@/utils/getClientIP";
 import { NextResponse } from "next/server";
 
+if (!config?.CHROME_EXT_ORIGIN)
+  throw new Error("CHROME_EXT_ORIGIN is not defined in environment variables");
+
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET,OPTIONS",
+  "Access-Control-Allow-Origin": `chrome-extension://${config.CHROME_EXT_ORIGIN}`,
+  "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
