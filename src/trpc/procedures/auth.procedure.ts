@@ -7,7 +7,6 @@ import { getClientIP } from "@/utils/getClientIP";
 
 const authProcedure = {
   registerUser: async (input: RegisterInput, ctx: Context) => {
-
     const { success } = await ratelimit.limit(getClientIP(ctx.req));
     if (!success) {
       return apiError(
@@ -26,7 +25,14 @@ const authProcedure = {
     if (isUserAlreadyExist)
       return apiError("CONFLICT", "User Already Exist, Please Login");
 
-    const user = await authService.createUser(input);
+    const hashedPassword = await authService.createHashedPassword(
+      input.password
+    );
+
+    const user = await authService.createUser({
+      ...input,
+      password: hashedPassword,
+    });
     return apiResponse(user, "User Is Created Successfully");
   },
 };

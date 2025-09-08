@@ -18,6 +18,13 @@ export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
+    if (!email || !password) {
+      return NextResponse.json(
+        { message: "Email and password are required." },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
     const { success } = await ratelimit.limit(getClientIP(req));
     if (!success)
       return NextResponse.json(
