@@ -21,8 +21,13 @@ const authService = {
     });
   },
 
-  comparePassword: async (oldPassword: string, newPassword: string) => {
-    return bcrypt.compare(oldPassword, newPassword);
+  comparePassword: async (password: string, hashedPassword: string) => {
+    return bcrypt.compare(password, hashedPassword);
+  },
+
+  createHashedPassword: async (password: string) => {
+    const salt = await bcrypt.genSalt(12);
+    return await bcrypt.hash(password, salt);
   },
 };
 
